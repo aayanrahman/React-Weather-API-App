@@ -1,20 +1,19 @@
-import "../styles/components/Forecast.scss"
-import HourlyForecastWidget from "./HourlyForecastWidget"
-import DailyForecastWidget from "./DailyForecastWidget"
+import "../styles/components/Forecast.scss";
+import HourlyForecastWidget from "./HourlyForecastWidget";
+import DailyForecastWidget from "./DailyForecastWidget";
 
 function Forecast({ title, type, data }) {
-    if (!Array.isArray(data)) {
-        console.error("data is not an array:", data);
-        return <div>Error: data is not an array</div>;
-    }
+    // Check if data is a function and call it to get the actual data
+    const dataArray = typeof data === 'function' ? data() : data;
+   
     
     return (
         <div className="Forecast">
-            <div className="forecast-containter">
+            <div className="forecast-container">
                 <h3>{title}</h3>
                 <div className="widget-container">
-                    {data.map((singleData, index) => (
-                        <div key={index}>
+                    {dataArray.map((singleData) => (
+                        <div>
                             {type === "hourly" ? (
                                 <HourlyForecastWidget data={singleData} />
                             ) : (
@@ -27,6 +26,5 @@ function Forecast({ title, type, data }) {
         </div>
     );
 }
-
 
 export default Forecast;
