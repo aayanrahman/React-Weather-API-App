@@ -1,3 +1,4 @@
+import "../styles/components/Main.scss"
 
 function Main () {
     return (

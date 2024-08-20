@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "sass": "^1.77.8"
+  },
+  "dependencies": {
+    "bootstrap-icons": "^1.11.3"
   }
 }
