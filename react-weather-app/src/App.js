@@ -6,11 +6,12 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 function App() {
   const darkTheme = true; 
   return (
-    <div className={`App-${darkTheme ? "dark": "light"}`}>
-      <Header/>
-      <Main/>
+    <div className={`App-${darkTheme ? "dark" : "light"}`}>
+      <Header />
+      <Main />
     </div>
   );
 }
 
 export default App;
+
