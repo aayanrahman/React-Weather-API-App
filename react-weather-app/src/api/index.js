@@ -1,17 +1,24 @@
-import CurrentWeather from "./current-weather.json";
-import dailyForecast from "./daily-forecast.json"
-import hourlyForecast from "./hourly-forecast.json"
+import axios from 'axios';
 
-function getCurrentWeather() {
-    return CurrentWeather.current
+export async function getWeatherData(endpoint, place_id, measurementSystem) {
+    const options = {
+    method: 'GET',
+    
+    params: {
+        place_id ,
+        language: 'en',
+        units: measurementSystem,
+    },
+    headers: {
+
+    }
+    };
+
+    try {
+        const response = await axios.request(options);
+        return response.data;
+    } catch (error) {
+        console.error(error);
+    }
 }
 
-function getDailyForecast() {
-    return dailyForecast.daily.data
-}
-
-function getHourlyForecast() {
-    return hourlyForecast.hourly.data
-}
-
-export {getCurrentWeather, getDailyForecast, getHourlyForecast};
