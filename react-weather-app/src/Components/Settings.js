@@ -1,4 +1,5 @@
 import { useContext, useState } from "react"
+import {MEASUREMENT_SYSTEMS} from "../constants/index"
 import ThemeContext from "../context/theme.context"
 import "../styles/components/Settings.scss"
 
@@ -23,12 +24,19 @@ function Settings() {
                     </div>
                 </div>
              </div>
-             <div className="settings-btn" onClick={setOpenSettings}>
-                <i className="bi bi-gear"></i>
+             <div className="settings-btn" onClick={() => setOpenSettings(prevVal => !prevVal)}>
+                <i className={`bi bi-gear${openSettings ? "-fill": ""}`}></i>
              </div>
              <div className={`settings-menu ${openSettings ? "open": ""}`}>
                 <div className="measurement-systems">
                     <h4>Measurement Systems:</h4>
+                    <div className="systems">
+                        {
+                            Object.values(MEASUREMENT_SYSTEMS).map(system => (
+                                <div className="system">{system}</div>
+                            ))
+                        }
+                    </div>
                 </div>
              </div>
         </div>
