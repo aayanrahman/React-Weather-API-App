@@ -4,6 +4,7 @@ function HourlyForecastWidget({data}) {
     const {date, icon, summary, temperature, precipitation, wind} = data;
 
     // date format
+    
     const now_date = {
         day: new Intl.DateTimeFormat(navigator.language,{
             weekday: "short",
@@ -16,6 +17,7 @@ function HourlyForecastWidget({data}) {
         }).format(new Date().setMinutes(0)), 
 
     };
+    
     
     const weather_date = {
         day: new Intl.DateTimeFormat(navigator.language,{
@@ -30,6 +32,7 @@ function HourlyForecastWidget({data}) {
 
     };
 
+    
     weather_date.day =
     weather_date.day === now_date.day &&
     weather_date.time === now_date.time
