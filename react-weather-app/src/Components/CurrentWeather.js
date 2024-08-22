@@ -1,6 +1,8 @@
 
 import WeatherIcon from "./WeatherIcon";
 import "../styles/components/CurrentWeather.scss"
+import {useContext} from "react"
+import WeatherContext from "../context/weather.context"
 
 function CurrentWeather({data}) {
     
@@ -17,48 +19,50 @@ function CurrentWeather({data}) {
         wind,
     } = data;
 
+    const{units} = useContext(WeatherContext)
+
     const otherInfoWidgets = [
         {
             id: 0,
             icon: 'droplet',
             name: 'Precipitation',
             value: Math.round(precipitation.total),
-            unit: 'in/h',
+            unit: units.precipitation,
           },
           {
             id: 1,
             icon: 'wind',
             name: 'Wind',
             value: Math.round(wind.speed),
-            unit: 'mph',
+            unit: units.wind_speed,
           },
           {
             id: 2,
             icon: 'moisture',
             name: 'Humidity',
             value: Math.round(humidity),
-            unit: '%',
+            unit: units.humidity,
           },
           {
             id: 3,
             icon: 'sunglasses',
             name: 'UV index',
             value: Math.round(uv_index),
-            unit: '',
+            unit: units.uv_index,
           },
           {
             id: 4,
             icon: 'clouds-fill',
             name: 'Clouds cover',
             value: Math.round(cloud_cover),
-            unit: '%',
+            unit: units.cloud_cover,
           },
           {
             id: 5,
             icon: 'eye',
             name: 'Visibility',
             value: Math.round(visibility),
-            unit: 'mi',
+            unit: units.visibility,
           },
     ]
 
@@ -69,8 +73,8 @@ function CurrentWeather({data}) {
                     <WeatherIcon iconNumber={icon_num} summary={summary}/> 
                 </div>
                 <div className="value">
-                    <div className="real">{temperature} °C</div>
-                    <div className="feels_like">feels like {feels_like} °C</div>
+                    <div className="real">{Math.round(temperature)} {units.temperature}</div>
+                    <div className="feels_like">feels like {feels_like} {units.temperature}</div>
                 </div>
                 <div className="summary">{summary}</div>
             </div>

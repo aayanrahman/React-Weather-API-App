@@ -15,8 +15,8 @@ export const MEASUREMENT_SYSTEMS = {
     UK: 'uk',
     US: 'us',
     CA: 'ca',
-  };
-  export const UNITS = {
+};
+export const UNITS = {
     metric: {
       temperature: '°C',
       precipitation: 'mm/h',
@@ -53,4 +53,4 @@ export const MEASUREMENT_SYSTEMS = {
       uv_index: '',
       cloud_cover: '%',
     },
-  };
+};
